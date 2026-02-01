@@ -1,0 +1,13 @@
+{
+  "name": "laptop-store",
+  "version": "1.0.0",
+  "description": "Laptop Store Final Project",
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "start": "node start-all.js",
+    "dev": "npm run install-all"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
