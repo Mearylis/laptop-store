@@ -1,0 +1,59 @@
+[
+    {
+        "brand": "Razer",
+        "model": "Blade 15",
+        "categorySlug": "gaming",
+        "price": 2499,
+        "stock": 10,
+        "specifications": {
+            "processor": "i7-12800H",
+            "ram": "32GB",
+            "storage": "1TB SSD",
+            "display": "15.6 QHD 240Hz",
+            "graphics": "RTX 3070 Ti"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1593642702749-b7d2a804fbcf?q=80&w=1000&auto=format&fit=crop"
+        ],
+        "sku": "RAZ-BLD-15",
+        "description": "Ultra-thin gaming laptop.",
+        "isActive": true
+    },
+    {
+        "brand": "Lenovo",
+        "model": "ThinkPad X1 Carbon",
+        "category": "Business",
+        "price": 1699,
+        "stock": 50,
+        "specifications": {
+            "processor": "i7-1260P",
+            "ram": "16GB",
+            "storage": "512GB SSD",
+            "display": "14 FHD+",
+            "os": "Windows 11 Pro"
+        },
+        "images": [
+            "https://images.unsplash.com/photo-1588872657578-137a685ee431?q=80&w=1000&auto=format&fit=crop"
+        ],
+        "sku": "LEN-THK-X1",
+        "description": "Legendary durability and keyboard.",
+        "isActive": true
+    },
+    {
+        "brand": "Unknown",
+        "model": "Ghost Laptop",
+        "categorySlug": "non-existent-category",
+        "price": 999,
+        "stock": 0,
+        "specifications": {
+            "processor": "Unknown",
+            "ram": "Unknown",
+            "storage": "Unknown",
+            "display": "Unknown"
+        },
+        "images": [],
+        "sku": "GHOST-001",
+        "description": "Should fail import due to missing category.",
+        "isActive": false
+    }
+]

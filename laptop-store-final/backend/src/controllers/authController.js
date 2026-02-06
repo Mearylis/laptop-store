@@ -268,6 +268,18 @@ exports.uploadAvatar = async (req, res, next) => {
         }
 
         const user = await User.findById(req.user.userId);
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: 'User not found'
+            });
+        }
+
+        // Ensure profile object exists
+        if (!user.profile) {
+            user.profile = {};
+        }
+
         // Assuming file upload middleware saves file and provides path
         // For local uploads setup:
         const avatarPath = `/uploads/${req.file.filename}`;

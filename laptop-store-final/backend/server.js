@@ -58,7 +58,12 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 // Database connection
 mongoose.connect(process.env.MONGODB_URI)
-    .then(() => console.log('✅ MongoDB connected successfully'))
+    .then(() => {
+        console.log('✅ MongoDB connected successfully');
+        // Start Auto-Fixer for manual Compass imports
+        const { startAutoFixer } = require('./src/utils/autoFix');
+        startAutoFixer();
+    })
     .catch(err => {
         console.error('❌ MongoDB connection error:', err);
         process.exit(1);
@@ -72,6 +77,20 @@ app.use('/api/orders', require('./src/routes/orderRoutes'));
 app.use('/api/reviews', require('./src/routes/reviewRoutes'));
 app.use('/api/categories', require('./src/routes/categoryRoutes'));
 app.use('/api/analytics', require('./src/routes/analyticsRoutes'));
+
+// DEBUG ENDPOINT: View Raw DB Data
+app.get('/api/debug/raw-laptops', async (req, res) => {
+    try {
+        const laptops = await mongoose.connection.db.collection('laptops').find({}).sort({ _id: -1 }).limit(20).toArray();
+        res.json({
+            count: laptops.length,
+            dbName: mongoose.connection.db.databaseName,
+            data: laptops
+        });
+    } catch (e) {
+        res.status(500).json({ error: e.message });
+    }
+});
 
 // Health check
 app.get('/health', (req, res) => {
